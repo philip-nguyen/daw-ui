@@ -1,5 +1,6 @@
 import React from 'react';
 import SixteenthNote from './SixteenthNote';
+import '../style.css';
 
 const Sequencer = () => {
   const one16thSequence = [];
@@ -13,16 +14,17 @@ const Sequencer = () => {
 
   for(let i = 0; i < 16; i++) {
     one16thSequence.push(
-      <div className="one wide column">
-        <div className="ui vertical buttons">
+      <div className="">
+        <div id={`step-${i+1}`} className="pad-column">
           {octave}
         </div>
       </div>
     );
   }
 
+  // <!-- here comes the description of what the line is or sounds like -->
   return (
-    <div className="ui grid">
+    <div className="flex">
       {one16thSequence}
     </div>
   );
