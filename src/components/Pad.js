@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import "../style.css";
 
-const SixteenthNote = () => {
+// The single note button
+const Pad = () => {
   const [on, setOn] = useState(false);
   // const isOn = false;
   
@@ -12,4 +13,4 @@ const SixteenthNote = () => {
     );
 };
 
-export default SixteenthNote;
+export default Pad;

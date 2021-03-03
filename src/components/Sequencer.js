@@ -1,5 +1,5 @@
 import React from 'react';
-import SixteenthNote from './SixteenthNote';
+import Pad from './Pad';
 import '../style.css';
 
 const Sequencer = () => {
@@ -8,14 +8,14 @@ const Sequencer = () => {
 
   for(let i = 0; i < 13; i++) {
     octave.push(
-      <SixteenthNote />
+      <Pad />
     );
   }
 
   for(let i = 0; i < 16; i++) {
     one16thSequence.push(
       <div className="">
-        <div id={`step-${i+1}`} className="pad-column">
+        <div id={`step-${i+1}`} className="pads-column">
           {octave}
         </div>
       </div>
