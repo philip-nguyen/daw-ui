@@ -7,9 +7,12 @@ const Pad = () => {
   // const isOn = false;
   
   //<button onClick={() => setOn(!on)} class={`ui ${on ? 'blue' : ''} button`}></button>
+  const toggle = () => {
+    setOn(!on);
+  }
   
   return (
-    <div className="pad"></div>
+    <div className={on ? 'pad pad-pressed' : 'pad'} onClick={() => toggle()}></div>
     );
 };
 

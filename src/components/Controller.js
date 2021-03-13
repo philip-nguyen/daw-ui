@@ -4,13 +4,7 @@ import '../style.css';
 
 const Controller = () => {
     
-
-   const togglePadPressedClass = (pad) => {
-        pad.classList.contains("pad-pressed")
-        ? pad.classList.remove("pad-pressed")
-        : pad.classList.add("pad-pressed");
-    }
-
+    
     const clearSelectedPads = () => {
         document.querySelectorAll(".pad-pressed").forEach(pad => {
           pad.classList.remove("pad-pressed");
@@ -43,7 +37,7 @@ const Controller = () => {
                     <button id="stop" class="navigation-buttons fa fa-stop" disabled></button>
                     <button id="play" class="navigation-buttons fa fa-play"></button>
                     <button id="record" class="navigation-buttons fa fa-microphone"></button>
-                    <button id="delete" class="navigation-buttons fa fa-trash"></button>
+                    <button id="delete" class="navigation-buttons fa fa-trash" onClick={() => clearSelectedPads()}></button>
 
             
                     <div class="select-wrapper">
