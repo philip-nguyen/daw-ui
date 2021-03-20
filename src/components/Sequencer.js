@@ -16,7 +16,7 @@ class Sequencer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      one16thSequence: [],
+      sequence: [],
       
     }
     //const one16thSequence = [];
@@ -28,7 +28,7 @@ class Sequencer extends Component {
     }
   
     for(let i = 0; i < 16; i++) {
-      this.state.one16thSequence.push(
+      this.state.sequence.push(
         <div className="">
           <div id={`step-${i+1}`} className="pads-column">
             {octave}
@@ -43,7 +43,7 @@ class Sequencer extends Component {
   render() {
     return (
       <div className="flex">
-        {this.state.one16thSequence}
+        {this.state.sequence}
       </div>
     );
   }
