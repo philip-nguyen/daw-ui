@@ -1,8 +1,8 @@
 import React from 'react';
-import Sequencer from './components/Sequencer';
+import Controller from './components/Controller';
 
 export default () => {
   return (
-    <Sequencer />
+    <Controller />
   );
 };
