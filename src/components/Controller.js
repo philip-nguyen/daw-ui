@@ -1,6 +1,7 @@
 import React from 'react';
 import Sequencer from './Sequencer';
 import '../style.css';
+import { Tone } from 'tone/build/esm/core/Tone';
 
 const Controller = () => {
     
@@ -34,8 +35,8 @@ const Controller = () => {
         <div id="sequencer">
             <div class="sequencer">
                 <div id="controls" class="buttons">
-                    <button id="stop" class="navigation-buttons fa fa-stop" disabled></button>
-                    <button id="play" class="navigation-buttons fa fa-play"></button>
+                    <button id="stop" className="navigation-buttons fa fa-stop" disabled></button>
+                    <button id="play" className="navigation-buttons fa fa-play"></button>
                     <button id="record" class="navigation-buttons fa fa-microphone"></button>
                     <button id="delete" class="navigation-buttons fa fa-trash" onClick={() => clearSelectedPads()}></button>
 
@@ -78,6 +79,12 @@ const Controller = () => {
 
                     
                     <ul class="notes">
+                        
+                        <li>B#4</li>
+                        <li>B4</li>
+                        <li>A#4</li>
+                        <li>A4</li>
+                        <li>G#4</li>
                         <li>G4</li>
                         <li>F#4</li>
                         <li>F4</li>
