@@ -1,5 +1,6 @@
 import React from 'react';
 import Sequencer from './Sequencer';
+import Sequence from './Sequence';
 import '../style.css';
 import { Tone } from 'tone/build/esm/core/Tone';
 
@@ -33,52 +34,52 @@ const Controller = () => {
 
     return (
         <div id="sequencer">
-            <div class="sequencer">
-                <div id="controls" class="buttons">
+            <div className="sequencer">
+                <div id="controls" className="buttons">
                     <button id="stop" className="navigation-buttons fa fa-stop" disabled></button>
                     <button id="play" className="navigation-buttons fa fa-play"></button>
-                    <button id="record" class="navigation-buttons fa fa-microphone"></button>
-                    <button id="delete" class="navigation-buttons fa fa-trash" onClick={() => clearSelectedPads()}></button>
+                    <button id="record" className="navigation-buttons fa fa-microphone"></button>
+                    <button id="delete" className="navigation-buttons fa fa-trash" onClick={() => clearSelectedPads()}></button>
 
             
-                    <div class="select-wrapper">
+                    <div className="select-wrapper">
                         <span>Instrument</span>
-                        <select class="wave navigation-buttons" id="instrument-control" data-label="wave">
-                            <option class="optionColor" value="sine">Synth</option>
+                        <select className="wave navigation-buttons" id="instrument-control" data-label="wave">
+                            <option className="optionColor" value="sine">Synth</option>
                             <option value="sawtooth">Sawtooth</option>
                             <option value="square">Square</option>
                             <option value="triangle">Triangle</option>
                         </select>
                     </div>
 
-                    <div class="select-wrapper">
+                    <div className="select-wrapper">
                         <span>Octave</span>
-                        <select id="octave-control" data-label="octave" class="octave navigation-buttons">
+                        <select id="octave-control" data-label="octave" className="octave navigation-buttons">
                             <option> 1</option>
                             <option>2</option>
                             <option>3</option>
                         </select>
                     </div>
 
-                    <div class="select-wrapper">
+                    <div className="select-wrapper">
                         <span>Style</span>
-                        <select id="style-control" data-label="octave" class="BPM navigation-buttons">
+                        <select id="style-control" data-label="octave" className="BPM navigation-buttons">
                             <option>Legato</option>
                             <option>Staccato</option>
                         </select>
                     </div>
 
-                    <div class="select-wrapper slide-container">
+                    <div className="select-wrapper slide-container">
 
                         <br/>
-                        <div class="input-container">
+                        <div className="input-container">
                             <span id="bpm-display"></span>
-                            <input type="range" min="60" max="200" value="120" class="slider" id="bpm-slider"/>
+                            <input type="range" min="60" max="200" value="120" className="slider" id="bpm-slider"/>
                         </div>
                     </div>
 
                     
-                    <ul class="notes">
+                    <ul className="notes">
                         
                         <li>B#4</li>
                         <li>B4</li>
@@ -97,7 +98,7 @@ const Controller = () => {
                     
                     
                 </div>
-                <Sequencer />
+                <Sequence />
             </div>
         </div>
         

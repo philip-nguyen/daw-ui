@@ -7,10 +7,29 @@ import { Synth } from 'tone';
 
 
 class Sequencer extends Component {
-  togglePadPressedClass = (pad) => {
-    pad.classList.contains("pad-pressed")
+  togglePadPressedClass = (clickedColumn, clickedNote) => {
+    // Shallow copy of our grid with updated isActive
+    let updatedGrid = this.state.measure.map((column, columnIndex) =>
+      { console.log(column);
+        column.map((cell, cellIndex) => {
+        let cellCopy = cell;
+
+        // Flip isActive for the clicked note-cell in our grid
+        if (columnIndex === clickedColumn && cellIndex === clickedNote) {
+          cellCopy.isActive = !cell.isActive;
+        }
+
+        return cellCopy;
+      })}
+    );
+    this.setState({
+      measure : updatedGrid
+    })
+    /*
+      pad.classList.contains("pad-pressed")
     ? pad.classList.remove("pad-pressed")
     : pad.classList.add("pad-pressed");
+    */
   } 
   
   playSequence = () => {
@@ -33,31 +52,7 @@ class Sequencer extends Component {
   mapMeasure() {
     const measure = [];
     for(let i = 0; i < 16; i++) {
-      measure.push(this.state.measureArray);
-    }
-    this.state.measure = measure.map((step, stepIndex) => (
-      <div key={stepIndex + "step"} id={`step-${stepIndex+1}`} className="pads-column">
-            {step.map(({note, isActive}, noteIndex) => (
-              <Pad note={note} isActive={isActive}
-                onClick={() => this.togglePadPressedClass(stepIndex, noteIndex)}
-                key={note + stepIndex}
-              />
-            ))}
-          </div>
-    ));
-    return measure;
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      sequence: [],
-      isPlaying: false,
-      transportBpm: 138,
-      currentMeasure: null,
-      playheadPosition: null,
-      playheadScheduleId: null,
-      measureArray: [
+      let notes = [
         {note : "C4", isActive: false, velocity: 0.9},
         {note : "C#4",isActive: false,  velocity: 0.9},
         {note : "D4", isActive: false, velocity: 0.9},
@@ -71,14 +66,45 @@ class Sequencer extends Component {
         {note : "A#4", isActive: false, velocity: 0.9},
         {note : "B4", isActive: false, velocity: 0.9},
         {note : "B#4", isActive: false, velocity: 0.9}
-      ],
-      measure:[]
+      ];
+      measure.push(notes);
     }
+    console.log('measure', measure);
+    return measure;
+  }
+
+  constructor(props) {
+    super(props);
+    const notes = [
+      {note : "C4", isActive: false, velocity: 0.9},
+      {note : "C#4",isActive: false,  velocity: 0.9},
+      {note : "D4", isActive: false, velocity: 0.9},
+      {note : "D#4", isActive: false, velocity: 0.9},
+      {note : "E4", isActive: false, velocity: 0.9},
+      {note : "F4", isActive: false, velocity: 0.9},
+      {note : "F#4", isActive: false, velocity: 0.9},
+      {note : "G4", isActive: false, velocity: 0.9},
+      {note : "G#4", isActive: false, velocity: 0.9},
+      {note : "A4", isActive: false, velocity: 0.9},
+      {note : "A#4", isActive: false, velocity: 0.9},
+      {note : "B4", isActive: false, velocity: 0.9},
+      {note : "B#4", isActive: false, velocity: 0.9}
+    ];
+    this.state = {
+      sequence: [],
+      isPlaying: false,
+      transportBpm: 138,
+      currentMeasure: null,
+      playheadPosition: null,
+      playheadScheduleId: null,
+      
+      measure: this.mapMeasure()
+    }
+
+    this.togglePadPressedClass = this.togglePadPressedClass.bind(this);
     // this.state.measureArray[0].pitch
 
-    this.setState({
-      measure: this.mapMeasure()
-    })
+    console.log(this.state.measure);
   }
   
   playSequence = async () => {
@@ -113,6 +139,18 @@ class Sequencer extends Component {
   render() {
     return (
       <div className="flex">
+        {this.state.measure.map((step, stepIndex) => (
+          <div key={stepIndex + "step"} 
+               id={`step-${stepIndex+1}`} className="pads-column"
+          >
+            {step.map(({note, isActive}, noteIndex) => (
+              <Pad note={note} isActive={isActive}
+                onClick={() => this.togglePadPressedClass(stepIndex, noteIndex)}
+                key={note + stepIndex}
+              />
+            ))}
+          </div>
+    ))}
         {this.state.measure}
         
       </div>
