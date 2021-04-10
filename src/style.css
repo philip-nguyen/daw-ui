@@ -82,7 +82,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
     width: calc(600px / 10 - 10px);
-    height: calc(600px / 10 - 10px);
+    height: calc(400px / 10 - 10px);
     margin: 5px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
     transition: #42424a 100ms ease;

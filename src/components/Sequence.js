@@ -103,7 +103,9 @@ const Sequence = () => {
                 // Sends the active note to our Polysynth
                 synth.triggerAttackRelease(notes[step], "16n", time);
             },
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+            // can use [...Array(grid.length).keys()] 
+            // to get the length of the grid dynamically
+            [...Array(grid.length).keys()],
             "16n"
         );
         if (isPlaying) {
@@ -124,7 +126,7 @@ const Sequence = () => {
           await Tone.Transport.start();
     }
 
-    console.log(grid);
+    //console.log(grid);
     return (
         <div id="sequencer">
             <div className="sequencer">
@@ -134,7 +136,10 @@ const Sequence = () => {
                         onClick={() => PlaySequence()}
                         ><i className="play icon"></i></button>
                     <button id="record" className="navigation-buttons fa fa-microphone"></button>
-                    <button id="delete" className="navigation-buttons fa fa-trash" onClick={() => clearSelectedPads()}></button>
+                    <button id="delete" className="navigation-buttons fa fa-trash" 
+                        onClick={() => clearSelectedPads()}>
+                            <i className="trash alternate icon"></i>
+                        </button>
 
             
                     <div className="select-wrapper">
